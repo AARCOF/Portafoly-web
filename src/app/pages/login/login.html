@@ -1,0 +1,36 @@
+<div class="login-wrapper">
+  <div class="logo-section">
+    <img src="assets/walking2.png" alt="Logo" />
+  </div>
+
+  <div class="login-container">
+    <h2>Iniciar Sesión</h2>
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+      <label>Email</label>
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="loginData.email"
+        required
+        placeholder="estudiante@unamba.edu.pe"
+      />
+
+      <label>Contraseña</label>
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="loginData.password"
+        required
+        placeholder="contraseña123"
+      />
+
+      <button type="submit" [disabled]="loginForm.invalid">Ingresar</button>
+    </form>
+
+    <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>

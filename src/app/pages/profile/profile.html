@@ -1,0 +1,191 @@
+<div class="profile-container" *ngIf="user">
+  <h2>Editar Perfil</h2>
+
+  <div class="profile-info">
+    <!-- Avatar -->
+    <div class="avatar-section">
+      <div class="avatar"></div>
+      <button type="button">Cambiar foto</button>
+    </div>
+
+    <!-- Formulario -->
+    <form (ngSubmit)="updateProfile()" #profileForm="ngForm">
+      <div class="input-group">
+        <input
+          [(ngModel)]="user.firstName"
+          name="firstName"
+          placeholder="Nombre"
+          required
+        />
+        <input
+          [(ngModel)]="user.lastName"
+          name="lastName"
+          placeholder="Apellido"
+          required
+        />
+      </div>
+
+      <div class="input-group">
+        <input
+          [(ngModel)]="user.email"
+          name="email"
+          placeholder="Correo"
+          disabled
+        />
+        <input
+          [(ngModel)]="user.phone"
+          name="phone"
+          placeholder="Teléfono"
+          required
+        />
+      </div>
+
+      <div class="input-group">
+        <input
+          [(ngModel)]="user.profession"
+          name="profession"
+          placeholder="Profesión"
+          required
+        />
+        <input
+          type="date"
+          [(ngModel)]="user.birthDate"
+          name="birthDate"
+          required
+        />
+      </div>
+
+      <button type="submit">Guardar Cambios</button>
+    </form>
+  </div>
+
+  <!-- HABILIDADES -->
+  <div class="section">
+    <h3>Habilidades</h3>
+    <div class="card-grid">
+      <li *ngFor="let skill of user.skills">
+        {{ skill.name }}
+        <button (click)="removeSkill(user.skills.indexOf(skill))">❌</button>
+      </li>
+
+      <!-- Botón agregar abre modal -->
+      <div
+        class="skill-card add-card"
+        data-bs-toggle="modal"
+        data-bs-target="#addSkillModal"
+      >
+        +
+      </div>
+    </div>
+  </div>
+
+  <!-- IDIOMAS -->
+  <div class="section">
+    <h3>Idiomas</h3>
+    <div class="card-grid">
+      <li *ngFor="let lang of user.languages">
+        {{ lang.name }}
+        <button (click)="removeLanguage(user.languages.indexOf(lang))">
+          ❌
+        </button>
+      </li>
+
+      <!-- Botón agregar abre modal -->
+      <div
+        class="skill-card add-card"
+        data-bs-toggle="modal"
+        data-bs-target="#addLanguageModal"
+      >
+        +
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODALES (sin cambios, funcionan igual) -->
+
+<!-- MODAL Añadir Skill -->
+<div
+  class="modal fade"
+  id="addSkillModal"
+  tabindex="-1"
+  aria-labelledby="addSkillModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addSkillModalLabel">Añadir Habilidad</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <input
+          [(ngModel)]="newSkill"
+          name="newSkill"
+          placeholder="Nueva habilidad"
+          required
+          class="form-control"
+        />
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button
+          class="btn btn-primary"
+          (click)="addSkill()"
+          data-bs-dismiss="modal"
+        >
+          Agregar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL Añadir Language -->
+<div
+  class="modal fade"
+  id="addLanguageModal"
+  tabindex="-1"
+  aria-labelledby="addLanguageModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addLanguageModalLabel">Añadir Idioma</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <input
+          [(ngModel)]="newLanguage"
+          name="newLanguage"
+          placeholder="Nuevo idioma"
+          required
+          class="form-control"
+        />
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button
+          class="btn btn-primary"
+          (click)="addLanguage()"
+          data-bs-dismiss="modal"
+        >
+          Agregar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

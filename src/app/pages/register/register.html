@@ -1,0 +1,83 @@
+<!-- Modal -->
+<div class="modal-backdrop" *ngIf="showModal">
+  <div class="modal">
+    <h3>¡Registro exitoso!</h3>
+    <p>Revisa tu correo electrónico para confirmar tu cuenta.</p>
+    <button (click)="closeModal()">Aceptar</button>
+  </div>
+</div>
+
+<div class="register-container">
+  <div class="form-section">
+    <h2>Crear Cuenta</h2>
+    <div class="form">
+      <label>Nombre:</label>
+      <input
+        type="text"
+        [(ngModel)]="registerForm.firstName"
+        name="name"
+        required
+      />
+
+      <label>Apellido:</label>
+      <input
+        type="text"
+        [(ngModel)]="registerForm.lastName"
+        name="lastName"
+        required
+      />
+
+      <label>Email:</label>
+      <input
+        type="email"
+        [(ngModel)]="registerForm.email"
+        name="email"
+        required
+      />
+
+      <label>Contraseña:</label>
+      <input
+        type="password"
+        [(ngModel)]="registerForm.password"
+        name="password"
+        required
+      />
+
+      <!-- Nuevos campos -->
+      <label>Teléfono:</label>
+      <input
+        type="tel"
+        [(ngModel)]="registerForm.phone"
+        name="phone"
+        required
+      />
+
+      <label>Profesión:</label>
+      <input
+        type="text"
+        [(ngModel)]="registerForm.profession"
+        name="profession"
+        required
+      />
+
+      <label>Fecha de Nacimiento:</label>
+      <input
+        type="date"
+        [(ngModel)]="registerForm.birthDate"
+        name="birthDate"
+        required
+      />
+
+      <button type="button" (click)="register()">¡Empecemos!</button>
+    </div>
+
+    <div *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  </div>
+
+  <div class="image-section">
+    <img src="assets/walking.png" alt="Walking" />
+  </div>
+</div>
