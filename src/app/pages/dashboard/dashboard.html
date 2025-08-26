@@ -1,62 +1,27 @@
-<!-- Navbar -->
-<nav class="navbar">
-  <img src="assets/logo.png" class="logo" alt="Logo" />
-  <ul class="nav-links">
-    <li><a routerLink="/explore">Explorar</a></li>
-    <li><a routerLink="/templates">Plantillas</a></li>
-    <li><a routerLink="/portfolios">Mis Portafolios</a></li>
-  </ul>
-  <div class="user-avatar">
-    <img src="assets/avatar-icon.png" alt="User Avatar" />
+<header class="navbar">
+  <!-- Logo -->
+  <div class="logo">
+    <img src="assets/logo-proun.png" alt="Logo" />
   </div>
-</nav>
 
-<!-- Perfil -->
-<div class="profile-container">
-  <h2>Sobre Mí</h2>
-  <div class="profile-info">
-    <div class="avatar-section">
-      <img src="assets/default-avatar.png" alt="Avatar" class="avatar" />
-      <button>Cambiar Avatar</button>
-    </div>
-    <form>
-      <div class="input-group">
-        <input type="text" placeholder="Nombres" />
-        <input type="text" placeholder="Apellidos" />
-      </div>
-      <div class="input-group">
-        <input type="date" placeholder="Fecha de Nacimiento" />
-        <input type="text" placeholder="Profesión" />
-      </div>
-      <div class="input-group">
-        <input type="email" placeholder="Correo" />
-        <input type="text" placeholder="Celular" />
-      </div>
-      <textarea placeholder="¿Cómo te describirías?"></textarea>
-    </form>
+  <!-- Menú -->
+  <nav class="menu">
+    <a routerLink="/dashboard/home" routerLinkActive="active">Inicio</a>
+    <a routerLink="/dashboard/search" routerLinkActive="active">Buscar</a>
+    <a routerLink="/home" fragment="team" routerLinkActive="active">Nosotros</a>
+    <a routerLink="/home" fragment="footer" routerLinkActive="active"
+      >Contáctanos</a
+    >
+  </nav>
+
+  <!-- Botones -->
+  <div class="actions">
+    <a routerLink="/dashboard/register" class="btn register">Regístrate</a>
+    <a routerLink="/dashboard/login" class="btn login">Ingresar</a>
   </div>
-</div>
+</header>
 
-<hr />
-
-<!-- Sección de Habilidades -->
-<div class="section">
-  <h3>Habilidades (Skills)</h3>
-  <div class="card-grid">
-    <div class="skill-card" *ngFor="let skill of skills">
-      {{ skill.name }}
-    </div>
-    <div class="skill-card add-card">+</div>
-  </div>
-</div>
-
-<!-- Sección de Idiomas -->
-<div class="section">
-  <h3>Idiomas (Languages)</h3>
-  <div class="card-grid">
-    <div class="skill-card" *ngFor="let language of languages">
-      {{ language.name }}
-    </div>
-    <div class="skill-card add-card">+</div>
-  </div>
-</div>
+<!-- Contenido dinámico -->
+<main class="dashboard-content">
+  <router-outlet></router-outlet>
+</main>

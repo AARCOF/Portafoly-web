@@ -1,118 +1,85 @@
-/* Navbar */
+/* Navbar principal */
 .navbar {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 10px 40px;
-  background-color: #fff;
-  border-bottom: 2px solid #eee;
-}
-
-.logo {
-  height: 50px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 30px;
-  list-style: none;
-}
-
-.nav-links a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #333;
-}
-
-.user-avatar img {
-  height: 40px;
-  border-radius: 50%;
-  background-color: #fdd835;
-}
-
-/* Perfil */
-.profile-container {
-  padding: 40px;
-}
-
-.profile-info {
-  display: flex;
-  gap: 40px;
-  align-items: flex-start;
-}
-
-.avatar-section {
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  background: #f9fafb;
+  padding: 12px 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-.avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background-color: #fdd835;
-}
-
-.avatar-section button {
-  margin-top: 10px;
-  padding: 5px 10px;
-  background-color: #fdd835;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-form {
-  flex: 1;
-}
-
-.input-group {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 15px;
-}
-
-input,
-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-textarea {
-  resize: none;
-  height: 80px;
-}
-
-/* Secciones Skills/Idiomas */
-.section {
-  padding: 20px 40px;
-}
-
-.card-grid {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-
-.skill-card {
-  width: 100px;
+/* Logo */
+.logo img {
   height: 100px;
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
-  clip-path: polygon(50% 0%, 90% 25%, 90% 75%, 50% 100%, 10% 75%, 10% 25%);
-  color: white;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
-  cursor: default;
 }
 
-.add-card {
-  background: linear-gradient(135deg, #a0c4ff, #3a86ff);
-  cursor: pointer;
+/* Menú de navegación */
+.menu {
+  display: flex;
+  gap: 60px;
+}
+
+.menu a {
+  position: relative;
+  font-size: 15px;
+  font-weight: 500;
+  color: #0f172a;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding-bottom: 4px;
+}
+
+/* Animación al pasar mouse */
+.menu a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 5px;
+  background: #06a55b;
+  transition: width 0.3s ease;
+}
+
+.menu a:hover::after,
+.menu a.active::after {
+  width: 100%;
+}
+
+.menu a:hover {
+  color: #2563eb;
+}
+
+/* Botones */
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+/* Botón registrarse */
+.btn.register {
+  background: #0d9488;
+  color: white;
+}
+
+.btn.register:hover {
+  background: #0f766e;
+}
+
+/* Botón ingresar */
+.btn.login {
+  background: #1e293b;
+  color: white;
+}
+
+.btn.login:hover {
+  background: #0f172a;
 }

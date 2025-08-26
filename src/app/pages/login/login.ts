@@ -29,7 +29,7 @@ export class Login {
           // Guardar datos del usuario en localStorage si quieres
           localStorage.setItem('loggedUser', JSON.stringify(response));
           // Redirigir al dashboard
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/dashboard/profile']);
         },
         error: (error) => {
           // Mostrar mensaje de error si las credenciales son incorrectas

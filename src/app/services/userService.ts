@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -22,6 +22,26 @@ export interface UpdateUserRequest {
   birthDate: string;
   skills: string[];
   languages: string[];
+}
+
+export interface SkillDTO {
+  id?: number;
+  name: string;
+  level?: number;
+}
+
+export interface PublicUser {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  profession?: string;
+  birthDate?: string;
+  enabled?: boolean;
+  skills: SkillDTO[]; // el buscador mostrará nombres desde aquí
+  languages: string[]; // para el explorer las tratamos como strings
+  profileImageUrl?: string;
 }
 
 @Injectable({
@@ -70,5 +90,18 @@ export class UserService {
   clearLoggedUser(): void {
     this.loggedUser = null;
     localStorage.removeItem('loggedUser');
+  }
+
+  // Listar todos (modo explorar)
+  getAllUsers(): Observable<PublicUser[]> {
+    return this.http.get<PublicUser[]>(`${this.API_URL}`);
+  }
+
+  // Buscar por nombre y/o habilidad (ambos opcionales)
+  searchUsers(name?: string, skill?: string): Observable<PublicUser[]> {
+    let params = new HttpParams();
+    if (name && name.trim()) params = params.set('name', name.trim());
+    if (skill && skill.trim()) params = params.set('skill', skill.trim());
+    return this.http.get<PublicUser[]>(`${this.API_URL}/search`, { params });
   }
 }

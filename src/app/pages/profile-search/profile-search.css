@@ -1,0 +1,111 @@
+/* --- CONTENEDOR PRINCIPAL --- */
+.search-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+  color: #1c2541;
+  text-align: center;
+}
+
+.search-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* --- INPUT DE BÚSQUEDA --- */
+.search-container input[type="text"] {
+  width: 70%;
+  padding: 12px 18px;
+  border: 2px solid #d9d9d9;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.search-container input[type="text"]:focus {
+  border-color: #f9c80e;
+  box-shadow: 0 0 8px rgba(249, 200, 14, 0.4);
+}
+
+/* --- RESULTADOS (CARDS DE USUARIOS) --- */
+.results {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.result-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: left;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-top: 4px solid #1c2541;
+}
+
+.result-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.result-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #1c2541;
+}
+
+.result-card p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* --- GRID PARA SKILLS E IDIOMAS --- */
+.result-card ul {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+/* --- ESTILO DE LAS CARDS DE SKILLS --- */
+.result-card ul li {
+  width: 120px;
+  height: 120px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  background: linear-gradient(135deg, #52c9c7, #1429a0);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3), 0 0 8px rgba(0, 128, 126, 0.6);
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-card ul li:hover {
+  transform: translateY(-8px) scale(1.05);
+  background: linear-gradient(135deg, #f1ba53, #06ceca);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.45), 0 0 14px rgba(234, 166, 37, 0.8);
+}
+
+/* --- DIFERENCIAR IDIOMAS (colores distintos) --- */
+.result-card.languages ul li {
+  background: linear-gradient(135deg, #1b224c, #eaa625);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), 0 0 8px rgba(234, 166, 37, 0.6);
+}
+
+.result-card.languages ul li:hover {
+  background: linear-gradient(135deg, #00807e, #eaa625);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.5), 0 0 14px rgba(0, 128, 126, 0.9);
+}

@@ -17,10 +17,8 @@ export class Profile {
   newSkill: string = '';
   newLanguage: string = '';
   showConfirmationWarning: boolean = false;
-
-  // control de formularios de agregar
-  showAddSkill: boolean = false;
-  showAddLanguage: boolean = false;
+  showSkillModal: boolean = false;
+  showLanguageModal: boolean = false;
 
   constructor(
     private router: Router,
@@ -119,7 +117,7 @@ export class Profile {
         next: (savedSkill: SkillDTO) => {
           this.user.skills.push(savedSkill); // mantiene objeto completo
           this.newSkill = '';
-          this.showAddSkill = false;
+          this.showSkillModal = false;
         },
         error: (err) => {
           console.error('Error al agregar la skill', err);
@@ -143,7 +141,7 @@ export class Profile {
           next: (savedLang: LanguageDTO) => {
             this.user.languages.push(savedLang);
             this.newLanguage = '';
-            this.showAddLanguage = false;
+            this.showLanguageModal = false;
           },
           error: () => alert('Error al agregar el language'),
         });

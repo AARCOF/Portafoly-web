@@ -1,0 +1,42 @@
+<div class="search-container">
+  <h2>Buscar perfiles</h2>
+
+  <!-- Caja de búsqueda -->
+  <input
+    type="text"
+    [(ngModel)]="query"
+    (input)="search()"
+    placeholder="Escribe un nombre o habilidad..."
+  />
+
+  <!-- Resultados -->
+  <div class="results">
+    <div *ngFor="let user of results" class="result-card">
+      <h3>{{ user.firstName }} {{ user.lastName }}</h3>
+
+      <p><b>Email:</b> {{ user.email }}</p>
+      <p><b>Teléfono:</b> {{ user.phone }}</p>
+      <p><b>Profesión:</b> {{ user.profession }}</p>
+      <p>
+        <b>Fecha de nacimiento:</b> {{ user.birthDate | date : "dd/MM/yyyy" }}
+      </p>
+
+      <div *ngIf="user.skills?.length > 0">
+        <b>Habilidades:</b>
+        <ul>
+          <li *ngFor="let skill of user.skills">{{ skill.name }}</li>
+        </ul>
+      </div>
+
+      <div *ngIf="user.languages?.length > 0">
+        <b>Idiomas:</b>
+        <ul>
+          <!-- 👇 depende de si usas List<String> o List<LanguageDTO> -->
+          <li *ngFor="let lang of user.languages">
+            {{ lang.name || lang }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
